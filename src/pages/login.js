@@ -1,30 +1,29 @@
 import React from 'react';
-import Logo from './../logo.png';
+import Logo from '../assets/NH_universidade_logo.png';
 
 const Login = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="flex bg-white shadow-lg rounded-2xl overflow-hidden w-3/4 max-w-4xl">
+      <div className=" flex bg-white shadow-lg rounded-2xl overflow-hidden w-2/4 max-w-4x1 h-3/4 max-h-4x1">
         {/* Lado Esquerdo - Logo */}
-        <div className="w-1/2 flex flex-col items-center justify-center p-8 bg-white">
+        <div className="w-3/4  flex flex-col items-center justify-center p-20 m-5 bg-white ">
           <img 
             src={Logo} 
             alt="Logo" 
-            className="w-24 h-24 mb-4"
+            className=""
           />
-          <h1 className="text-3xl font-bold text-black">NutriHouse</h1>
-          <p className="text-red-500 text-lg mt-2">Universidade</p>
+          
         </div>
 
         {/* Lado Direito - Formulário */}
-        <div className="w-1/2 bg-gradient-to-b from-red-500 to-red-400 p-8 flex flex-col justify-center">
+        <div className="w-2/3 bg-gradient-to-b from-red-500 to-red-400 p-8 flex flex-col justify-center">
           <form className="space-y-4">
             <div>
-              <label className="text-white text-sm">E-mail:</label>
+              <label className="text-white text-sm">Usuário:</label>
               <input 
-                type="email" 
+                type="user" 
                 className="w-full p-2 mt-1 rounded-full focus:outline-none focus:ring-2 focus:ring-red-300"
-                placeholder="Digite seu e-mail"
+                placeholder="Digite seu usuário"
               />
             </div>
 
