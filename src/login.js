@@ -1,7 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Logo from './logo.png';
 
 const Login = () => {
+  // Definindo os estados para o username, senha e mensagem de erro/sucesso
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
+
+  // Função para capturar o envio do formulário
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Validando se os campos não estão vazios
+    if (!username || !password) {
+      setMessage('Por favor, preencha todos os campos!');
+      return;
+    }
+
+    // Enviando os dados para o backend
+    const response = await fetch('http://localhost:5000/authenticate', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username, password }),
+    });
+
+    const data = await response.json();
+
+    // Verificando se a autenticação foi bem-sucedida
+    if (response.ok) {
+      setMessage('Usuário autenticado com sucesso!');
+      // Redirecionar ou tomar outra ação após login bem-sucedido (por exemplo, redirecionar para a página principal)
+    } else {
+      setMessage('Falha na autenticação: ' + (data.message || 'Erro desconhecido'));
+    }
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="flex bg-white shadow-lg rounded-2xl overflow-hidden w-3/4 max-w-4xl">
@@ -18,13 +53,15 @@ const Login = () => {
 
         {/* Lado Direito - Formulário */}
         <div className="w-1/2 bg-gradient-to-b from-red-500 to-red-400 p-8 flex flex-col justify-center">
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSubmit}>
             <div>
-              <label className="text-white text-sm">E-mail:</label>
+              <label className="text-white text-sm">Username:</label>
               <input 
-                type="email" 
+                type="text" 
+                value={username} 
+                onChange={(e) => setUsername(e.target.value)} // Atualiza o valor do username
                 className="w-full p-2 mt-1 rounded-full focus:outline-none focus:ring-2 focus:ring-red-300"
-                placeholder="Digite seu e-mail"
+                placeholder="Digite seu username"
               />
             </div>
 
@@ -32,6 +69,8 @@ const Login = () => {
               <label className="text-white text-sm">Senha:</label>
               <input 
                 type="password" 
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)} // Atualiza o valor da senha
                 className="w-full p-2 mt-1 rounded-full focus:outline-none focus:ring-2 focus:ring-red-300"
                 placeholder="Digite sua senha"
               />
@@ -43,6 +82,12 @@ const Login = () => {
             >
               Login
             </button>
+
+            {message && (
+              <p className={`text-center mt-4 ${message.includes('sucesso') ? 'text-green-500' : 'text-red-500'}`}>
+                {message}
+              </p>
+            )}
 
             <p className="text-center text-white mt-4 cursor-pointer hover:underline">
               Esqueceu a senha
