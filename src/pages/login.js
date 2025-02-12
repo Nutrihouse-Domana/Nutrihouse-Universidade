@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Logo from "../assets/NH_universidade_logo.png";
 
 const Login = () => {
   const [userDN, setUserDN] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -21,6 +23,8 @@ const Login = () => {
 
       if (response.ok) {
         alert("Login bem-sucedido!");
+        localStorage.setItem("username", data.username);
+        navigate("/home");
       } else {
         setError(data.message || "Falha na autenticação");
       }

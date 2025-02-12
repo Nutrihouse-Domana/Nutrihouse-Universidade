@@ -43,8 +43,14 @@ app.post('/authenticate', (req, res) => {
 
     authenticateWithDN(userDN, password, (isAuthenticated) => {
         if (isAuthenticated) {
+
+            const username = userDN.split('@')[0]; 
+            const nomeFormatado = username.split('.').map(word => 
+                word.charAt(0).toUpperCase() + word.slice(1)
+            ).join(' ');
+            
             console.log('Usuário autenticado com sucesso usando DN');
-            res.json({ message: 'Autenticação bem-sucedida' });
+            res.json({ message: 'Autenticação bem-sucedida', username: userDN.split('@')[0] });
         } else {
             console.log('Falha na autenticação do usuário usando DN');
             res.status(401).json({ message: 'Falha na autenticação' });
