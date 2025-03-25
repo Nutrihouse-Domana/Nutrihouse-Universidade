@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import Logo from "../assets/NH_universidade_logo.png";
 
 const Login = () => {

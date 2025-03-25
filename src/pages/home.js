@@ -26,9 +26,9 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center">
+    <div className="min-h-screen bg-white flex flex-col items-center ">
       <div className="w-full flex items-center justify-between px-24 py-4 bg-white">
-        <div className="flex items-center">
+        <div className="flex ">
           <img src={Logo} alt="Logo" className="w-32 mr-4" />
         </div>
         <h2 className="text-lg font-bold">
@@ -37,7 +37,7 @@ const Home = () => {
       </div>
 
       {/* Carrossel */}
-      <div className="w-3/4 mt-6">
+      <div className="Carousel">
         <Slider {...settings}>
           {[...Array(3)].map((_, index) => (
             <div key={index} className="p-4">
