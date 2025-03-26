@@ -53,7 +53,7 @@ const Login = () => {
                 value={userDN}
                 onChange={(e) => setUserDN(e.target.value)}
                 className="w-full p-2 mt-1 rounded-full focus:outline-none focus:ring-2 focus:ring-red-300"
-                placeholder="nome.sobrenome@nutrihouse.intra"
+                placeholder="nome.sobrenome"
                 required
               />
             </div>
