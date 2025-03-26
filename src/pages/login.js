@@ -16,7 +16,7 @@ const Login = () => {
       const response = await fetch("http://localhost:5000/authenticate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userDN: userDN, password }), 
+        body: JSON.stringify({ userDN: `${userDN}@nutrihouse.intra`, password }), 
       });
 
       const data = await response.json();
