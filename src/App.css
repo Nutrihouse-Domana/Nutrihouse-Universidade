@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+/* Estilização dos indicadores do carrossel */
+.slick-dots li button:before {
+  color: #e53e3e;
+  opacity: 0.4;
+}
+
+.slick-dots li.slick-active button:before {
+  opacity: 1;
+}

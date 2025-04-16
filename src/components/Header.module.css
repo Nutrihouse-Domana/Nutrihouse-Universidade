@@ -1,0 +1,17 @@
+/* Header.module.css */
+.header {
+    @apply w-full flex items-center justify-between px-6 md:px-24 py-4 bg-white shadow;
+  }
+  
+  .logo {
+    @apply w-24 md:w-32 mr-4;
+  }
+  
+  .greeting {
+    @apply text-lg font-bold;
+  }
+  
+  .username {
+    @apply text-red-500;
+  }
+  
