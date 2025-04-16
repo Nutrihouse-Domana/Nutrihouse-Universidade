@@ -1,20 +1,26 @@
-import { useEffect, useState } from "react";
+// src/pages/Home.jsx
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import Header from "../components/Header";
 import CarouselCard from "../components/CarouselCard";
-import styles from "./Home.module.css";
 import carouselData from "../data/carouselData";
-
+import styles from "./Home.module.css";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const Home = () => {
   const [username, setUsername] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedUsername = localStorage.getItem("username");
-    setUsername(storedUsername && storedUsername !== "undefined" ? storedUsername : "Usuário");
+    setUsername(
+      storedUsername && storedUsername !== "undefined"
+        ? storedUsername
+        : "Usuário"
+    );
   }, []);
 
   const settings = {
@@ -22,7 +28,7 @@ const Home = () => {
     infinite: true,
     speed: 500,
     slidesToShow: 3,
-    slidesToScroll: 1,
+    slidesToScroll: 2,
     arrows: true,
     centerMode: true,
     centerPadding: "40px",
@@ -30,13 +36,11 @@ const Home = () => {
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
         },
       },
     ],
   };
-
-  
 
   return (
     <main className={styles.container}>
@@ -44,9 +48,19 @@ const Home = () => {
       <div className={styles.carouselWrapper}>
         <Slider {...settings}>
           {carouselData.map((item, index) => (
-            <CarouselCard key={index} title={item.title} description={item.description} />
+            <div key={index} className="p-4">
+              <CarouselCard title={item.title} description={item.description} />
+            </div>
           ))}
         </Slider>
+        <div className={styles.buttonWrapper}>
+          <button
+            onClick={() => navigate("/cards")}
+            className={styles.seeAllButton}
+          >
+            Ver todos
+          </button>
+        </div>
       </div>
     </main>
   );
