@@ -8,6 +8,14 @@ app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
 console.log('Express.json habilitado para ler JSON');
 
+
+
+
+
+
+
+
+///////////////Comunicação com o server///////////////////////
 const authenticateWithDN = (userDN, password, callback) => {
     console.log('Iniciando a autenticação com DN:', userDN);
 
@@ -62,6 +70,56 @@ app.listen(5000, () => {
     console.log('Servidor backend rodando na porta 5000');
 });
 
+/////////////////////////////////////////////////////////////
+
+
+const FTPClient = require('basic-ftp');
+
+// Configuração do servidor FTP (NAS Iomega)
+const FTP_HOST = '192.168.1.4';
+const FTP_USER = 'admin';   // ou '' se for anônimo
+const FTP_PASS = 'nutr1@10m3ga';
+const FTP_PATH = 'Universidade Nutrihouse/DOMANA/CDP';       // caminho dentro do NAS onde estão os vídeos
+
+/**
+ * Lista arquivos de vídeo via FTP.
+ * Retorna um array com os nomes dos arquivos encontrados.
+ */
+async function listarVideosFTP() {
+    const client = new FTPClient.Client();
+    client.ftp.verbose = false;
+    try {
+        await client.access({
+            host: FTP_HOST,
+            user: FTP_USER,
+            password: FTP_PASS,
+            secure: false, // Geralmente o FTP do NAS não usa TLS
+        });
+        await client.cd(FTP_PATH); // Entra no diretório desejado
+        const arquivos = await client.list();
+
+        // Filtra apenas arquivos com extensões de vídeo
+        return arquivos
+            .filter(item => item.isFile)
+            .map(item => item.name)
+            .filter(nome => nome.match(/\.(mp4|avi|mkv|mov)$/i));
+    } catch (err) {
+        console.error('Erro ao acessar FTP:', err.message);
+        throw err;
+    } finally {
+        client.close();
+    }
+}
+
+// Rota GET que retorna os vídeos disponíveis no FTP
+app.get('/api/videos', async (req, res) => {
+    try {
+        const lista = await listarVideosFTP();
+        res.json({ videos: lista });
+    } catch (error) {
+        res.status(500).json({ error: 'Erro ao listar vídeos no servidor.' });
+    }
+});
 
 
 
