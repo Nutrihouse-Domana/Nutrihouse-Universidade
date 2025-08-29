@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../pages/Cards.module.css";
+import styles from "../style/Cards.module.css";
 
 const CarouselCard = ({ title, description }) => (
   <div className="flex justify-center">

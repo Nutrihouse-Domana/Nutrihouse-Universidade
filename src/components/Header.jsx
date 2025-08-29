@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./Header.module.css";
-import Logo from "../assets/logo_branca.png";
+import styles from "../style/Cards.module.css";
+import Logo from "../assets/logos/logo_branca.png";
 
 const Header = ({ username }) => (
   <header className={styles.header}>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Logo from "../assets/logo_branca.png"; // Importando a logo corretamente
+import Logo from "../assets/logos/logo_branca.png"; 
 import '../components/login.css';
 
 const Login = () => {
@@ -20,7 +20,7 @@ const Login = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          userDN: `${userDN}@nutrihouse.intra`,  // Usando userDN corretamente
+          userDN: `${userDN}@nutrihouse.intra`,  
           password,
         }),
       });
@@ -47,14 +47,14 @@ const Login = () => {
         <img src={Logo} alt="Logo NutriHouse" className="logo" />
         
         {/* Texto de instrução */}
-        <p className="instruction">Acesse com seu email:</p>
+        <p className="instruction">Acesse com seu usuário:</p>
 
         {/* Formulário de login */}
         <form onSubmit={handleLogin}>
-          <label htmlFor="email">E-mail:</label>
+          <label htmlFor="usuario">Usuário:</label>
           <input
-            type="email"
-            id="email"
+            type="usuario"
+            id="usuario"
             value={userDN}
             onChange={(e) => setUserDN(e.target.value)}  // Atualizando o estado userDN
             required

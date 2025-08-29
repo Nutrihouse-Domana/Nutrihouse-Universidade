@@ -31,14 +31,14 @@ body {
 .background::before {
   top: 0;
   left: 0;
-  background: url('../assets/background_onda1.jpg') no-repeat left top;
+  background: url('../assets/images/background_onda1.jpg') no-repeat left top;
   background-size: contain;
 }
 
 .background::after {
   bottom: 0;
   right: 0;
-  background: url('../assets/background_onda2.jpg') no-repeat right bottom;
+  background: url('../assets/images/background_onda2.jpg') no-repeat right bottom;
   background-size: contain;
 }
 

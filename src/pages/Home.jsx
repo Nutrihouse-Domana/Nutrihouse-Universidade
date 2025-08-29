@@ -5,7 +5,7 @@ import Slider from "react-slick";
 import Header from "../components/Header";
 import CarouselCard from "../components/CarouselCard";
 import carouselData from "../data/carouselData";
-import styles from "./Home.module.css";
+import styles from "../style/Home.module.css";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
