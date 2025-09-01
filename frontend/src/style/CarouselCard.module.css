@@ -1,0 +1,36 @@
+.carouselCard {
+  background-color: #bb2626;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carouselCard:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.carouselCardIcon {
+  margin-bottom: 15px;
+}
+
+.iconImage {
+  width: 100px; /* Tamanho fixo para as imagens */
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cardTitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 10px;
+}
+
+.carouselWrapper {
+  margin-top: 30px;
+  border: 1px solid red; /* Apenas para garantir que o carrossel tenha uma borda visível */
+}
