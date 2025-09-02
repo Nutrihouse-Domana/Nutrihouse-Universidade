@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
-import Header from "../components/Header";
 import CarouselCard from "../components/CarouselCard";
 import carouselData from "../data/carouselData";
 import styles from "../style/Home.module.css";
@@ -43,8 +42,7 @@ const Home = () => {
   };
 
   return (
-    <main className={styles.container}>
-      <Header username={username} />
+    <main className={`${styles.container} pt-2`}>
 
       {/* Carrossel */}
       <div className={styles.carouselWrapper}>

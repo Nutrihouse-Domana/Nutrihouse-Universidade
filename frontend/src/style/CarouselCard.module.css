@@ -1,8 +1,8 @@
 .carouselCard {
-  background-color: #bb2626;
+  background: linear-gradient(to bottom, #B95758, #e14d3a);
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  padding: 30px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }

@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "../style/Cards.module.css";
+import styles from "../style/CarouselCard.module.css";
+
 
 const CarouselCard = ({ title, icon }) => {
   return (
