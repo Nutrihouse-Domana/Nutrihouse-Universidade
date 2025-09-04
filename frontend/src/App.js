@@ -4,14 +4,10 @@ import Login from "./pages/login";
 import Home from "./pages/Home";
 import Cards from "./pages/Cards";
 import VideoList from './components/VideoList';
-import Header from "./components/Header";  // Importando o Header
 
 function App() {
   return (
     <Router>
-      {/* Header fora das rotas para aparecer sempre no topo */}
-      <Header /> 
-
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />

@@ -23,7 +23,7 @@ const Cards = () => {
         <h1 className="mt-8 text-2xl font-bold">Todos os Cards</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-items-center mt-6 w-full max-w-screen-xl">
           {carouselData.map((item, index) => (
-            <CarouselCard key={index} title={item.title} description={item.description} />
+            <CarouselCard key={index} title={item.title} description={item.description} image={item.image}/>
           ))}
         </div>
       </div>

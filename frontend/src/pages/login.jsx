@@ -47,7 +47,7 @@ const Login = () => {
         <img src={Logo} alt="Logo NutriHouse" className="logo" />
         
         {/* Texto de instrução */}
-        <p className="instruction">Acesse com seu usuário:</p>
+        <p className="instruction">Acesse com seu usuário NH:</p>
 
         {/* Formulário de login */}
         <form onSubmit={handleLogin}>

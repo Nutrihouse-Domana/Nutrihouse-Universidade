@@ -1,33 +1,41 @@
+// src/data/carouselData.js
+import iconChatGPT from "../assets/icons_cards/icon_chatgpt.png";
+import iconDomana from "../assets/icons_cards/icon_domana.png";
+import iconMilvus from "../assets/icons_cards/icon_milvus.png";
+import iconProtheus from "../assets/icons_cards/icon_protheus.png";
+import iconTeknisa from "../assets/icons_cards/icon_teknisa.png";
+import iconIA from "../assets/icons_cards/icon_IA.png";
+
 const carouselData = [
   {
-    title: "Card 1",
+    title: "Introdução ao ChatGPT Pro",
     description: "Descrição do card 1",
-    image: "/assets/icons_cards/icon_chatgpt.png",  
+    image: iconChatGPT ,
   },
   {
-    title: "Card 2",
+    title: "Domaná",
     description: "Descrição do card 2",
-    image: "/assets/icons_cards/icon_domana.png",
+    image: iconDomana,
   },
   {
-    title: "Card 3",
+    title: "Inteligência Artificial",
     description: "Descrição do card 3",
-    image: "/assets/icons_cards/icon_formaçao_lid.png",
+    image: iconIA,
   },
   {
-    title: "Card 4",
+    title: "Milvus",
     description: "Descrição do card 4",
-    image: "/assets/icons_cards/icon_milvus.png",
+    image: iconMilvus,
   },
   {
-    title: "Card 5",
+    title: "Protheus",
     description: "Descrição do card 5",
-    image: "/assets/icons_cards/icon_protheus.png",
+    image: iconProtheus,
   },
   {
-    title: "Card 6",
+    title: "Teknisa",
     description: "Descrição do card 6",
-    image: "/assets/icons_cards/icon_teknisa.png",
+    image: iconTeknisa,
   },
 ];
 

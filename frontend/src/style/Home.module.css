@@ -1,14 +1,37 @@
 .container {
- max-width: 1200px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
 
-.carouselWrapper {
-  margin-top: 30px;
+/* Área do carrossel centralizada na página */
+.carouselArea {
+  /* ocupa a tela menos a altura do header (ajuste se precisar) */
+  min-height: calc(400vh - 100px);
+  display: flex;
+  align-items: center;   /* centraliza verticalmente */
+  justify-content: center;
+  overflow: visible;     /* garante que os cards não sejam cortados */
+  padding-top: 150px;
+  padding-bottom: 0px;
 }
 
-.slick-prev, .slick-next {
+.carouselWrapper {
+  margin-top: 0;     /* zera a margem que empurrava o grid */
+  overflow: visible; /* evita corte dos elementos */
+}
+
+/* Dots logo abaixo do grid */
+.dotsRow {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+/* Setas do slick (se quiser usar em outro lugar) */
+.slick-prev,
+.slick-next {
   background-color: #333;
   border-radius: 50%;
   color: rgb(184, 24, 24);
@@ -25,10 +48,3 @@
   right: 10px;
 }
 
-.buttonWrapper {
-  @apply flex justify-center mt-6;
-}
-
-.seeAllButton {
-  @apply bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600 transition duration-300;
-}

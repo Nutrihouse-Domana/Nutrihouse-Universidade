@@ -4,16 +4,24 @@
   height: 320px;        /* altura aumentada */
   max-width: 300px;     /* largura aumentada */
   width: 100%;
+  display: flex;
+  justify-content: center;  /* Centraliza o conteúdo verticalmente */
+  text-align: center;   /* Alinha o texto no centro */
+  gap: 10rem; 
 }
 
 .cardImage {
   @apply bg-white rounded mb-4;
-  width: 100%;
-  height: 160px;        /* área de imagem também aumentada */
+  width: 60px;
+  height: 60px;        /* área de imagem também aumentada */
+  object-fit: contain;
 }
 
 .title {
   @apply text-lg font-bold;
+  margin-top: 10px;
+
+  
 }
 
 
