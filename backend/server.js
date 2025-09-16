@@ -1,5 +1,5 @@
-const express = require('express');
-const ldap = require('ldapjs');
+const express = require('express'); 
+const ldap = require('ldapjs'); // dep autenticação 
 const cors = require('cors');
 
 const app = express();
@@ -7,12 +7,6 @@ const app = express();
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
 console.log('Express.json habilitado para ler JSON');
-
-
-
-
-
-
 
 
 ///////////////Comunicação com o server///////////////////////
