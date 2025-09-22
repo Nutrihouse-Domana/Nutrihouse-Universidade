@@ -1,0 +1,125 @@
+/* Design Tela login */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #FAF9F7;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 0 15px;
+}
+
+/*ondas*/
+.background::before,
+.background::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 30%;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+.background::before {
+  top: 0;
+  left: 0;
+  background: url('../assets/images/background_onda1.jpg') no-repeat left top;
+  background-size: contain;
+}
+
+.background::after {
+  bottom: 0;
+  right: 0;
+  background: url('../assets/images/background_onda2.jpg') no-repeat right bottom;
+  background-size: contain;
+}
+
+.login-box {
+  background: linear-gradient(to bottom, #B95758, #e14d3a);
+  padding:10px 20px;
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  z-index: 1;
+  text-align: center;
+  width: 380px;
+  max-height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.subtitle {
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.instruction {
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 80%;
+}
+
+label {
+  color: white;
+  font-weight: bold;
+  text-align: left;
+}
+
+input {
+  padding: 08px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+}
+
+button {
+  padding: 10px;
+  background-color: white;
+  color: #0c0b0b;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin: 20px auto;
+  width: 200px;
+}
+
+button:hover {
+  background-color: #f0f0f0;
+}
+
+.forgot-password {
+  display: block;
+  margin-top: 10px;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.logo {
+  width: 250px;
+  height: auto;
+  margin-bottom: -10px; 
+}
