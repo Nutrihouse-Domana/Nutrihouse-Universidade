@@ -11,6 +11,7 @@ console.log('Express.json habilitado para ler JSON');
 
 ///////////////Comunicação com o server///////////////////////
 const authenticateWithDN = (userDN, password, callback) => {
+    // Loga só o usuário (DN), nunca a senha
     console.log('Iniciando a autenticação com DN:', userDN);
 
     const client = ldap.createClient({
@@ -20,18 +21,20 @@ const authenticateWithDN = (userDN, password, callback) => {
     });
 
     client.on('error', (err) => {
-        console.error('Erro de conexão LDAP:', err);
+        // imprime só a mensagem, nunca o objeto inteiro
+        console.error('Erro de conexão LDAP:', err.message);
         callback(false);
         return;
     });
 
     client.bind(userDN, password, (err) => {
         if (err) {
-            console.log('Erro na autenticação LDAP com DN:', err.message);
+            // Não mostrar senha aqui também
+            console.log('Erro na autenticação LDAP com DN:', userDN, '-', err.message);
             client.unbind();
             callback(false);
         } else {
-            console.log('Autenticação bem-sucedida com DN!');
+            console.log('Autenticação bem-sucedida com DN:', userDN);
             client.unbind();
             callback(true);
         }
@@ -39,7 +42,11 @@ const authenticateWithDN = (userDN, password, callback) => {
 };
 
 app.post('/authenticate', (req, res) => {
-    console.log('Requisição recebida no endpoint /authenticate com os dados:', req.body);
+    // ❌ Nunca logue req.body direto
+    // console.log('Requisição recebida no endpoint /authenticate com os dados:', req.body);
+
+    // Log seguro (só DN)
+    console.log('Requisição recebida em /authenticate para o usuário:', req.body.userDN);
 
     const { userDN, password } = req.body; 
 
@@ -51,10 +58,10 @@ app.post('/authenticate', (req, res) => {
                 word.charAt(0).toUpperCase() + word.slice(1)
             ).join(' ');
             
-            console.log('Usuário autenticado com sucesso usando DN');
-            res.json({ message: 'Autenticação bem-sucedida', username: userDN.split('@')[0] });
+            console.log('Usuário autenticado com sucesso:', username);
+            res.json({ message: 'Autenticação bem-sucedida', username });
         } else {
-            console.log('Falha na autenticação do usuário usando DN');
+            console.log('Falha na autenticação do usuário:', userDN);
             res.status(401).json({ message: 'Falha na autenticação' });
         }
     });

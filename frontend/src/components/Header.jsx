@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../assets/logos/logo_preta.png";
 import User from "../assets/images/user.png";
-import ExitIcon from "../assets/images/exit.png"; 
+import ExitIcon from "../assets/images/exit2.png"; 
 
 const Header = () => {
   const [username, setUsername] = useState("");
@@ -77,10 +77,11 @@ const Header = () => {
             
             {/* logout */}
             {isMenuOpen && (
-              <div className="absolute right-0 top-1 bg-transparent w-60 p-1">
+              <div className="absolute right-0 top-1 bg-transparent w-60 p-2">
                 <button
                   onClick={handleLogout}
-                  className="w-full text-left p-5 text-black hover:bg-gray-400 flex items-center gap-2">
+                  className="flex items-center gap-2 w-full px-10 py-2 text-sm font-poppins 
+                 text-white bg-gradient-to-b from-[#B95758] to-[#e14d3a] rounded-lg hover:bg-red-700 transition-colors">
                   <img src={ExitIcon} alt="Exit" className="h-6 w-6" /> {/* Ícone de saída */}
                   Encerrar Sessão
                 </button>
