@@ -7,17 +7,20 @@ const Sobre = () => {
   useEffect(() => {
     const stored = localStorage.getItem("username");
     if (stored && stored !== "undefined") setUsername(stored);
-  }, []);
+
+    document.body.style.overflowY = "auto";  // Rolagem forçada consertar depois 
+
+  }, []); 
 
   return (
     <main 
-      className="bg-[#FAF9F7] pt-24 px-8 min-h-screen overflow-y-auto">
+      className="bg-[#FAF9F7] pt-24 px-8 min-h-screen overflow-y-scroll">
       {/* Header fixo */}
       <Header username={username} />
 
       <div className="bg-[#FAF9F7] max-w-6xl mx-auto">
         {/* Hero / Capa */}
-        <section className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-white py-24 px-6 text-center rounded-lg shadow-xl">
+        <section className="bg-gradient-to-r text-white py-24 px-6 text-center rounded-lg shadow-xl">
           <h1 className="text-5xl font-bold mb-8">Universidade NutriHouse</h1>
           <p className="text-lg max-w-3xl mx-auto leading-relaxed">
             Um espaço digital desenvolvido pela <strong>NutriHouse</strong> para
@@ -47,7 +50,7 @@ const Sobre = () => {
         </section>
 
         {/* Seção O que você encontra */}
-        <section className="bg-[#FAF9F7] py-16 px-6">
+        <section className="bg-[#FAF9F7] py-10 px-6">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-poppins text-gray-800 mb-8">
               O QUE VOCÊ ENCONTRA NA PLATAFORMA
@@ -70,11 +73,11 @@ const Sobre = () => {
         </section>
 
         {/* Seção de evolução */}
-        <section className="max-w-4xl mx-auto py-16 px-6 text-center">
-          <h2 className="text-3xl font-bold text-gray-800 mb-6">
-            Em constante evolução
+        <section className="max-w-4xl bg-[#e14d3a] rounded-xl shadow p-6 hover:shadow-2xl transition-all duration-300 mx-auto py-16 px-6 text-center">
+          <h2 className="text-3xl font-poppins text-gray-800 mb-6">
+            EM CONSTANTE EVOLUÇÃO 
           </h2>
-          <p className="text-lg text-gray-600 leading-relaxed">
+          <p className="text-lg text-white leading-relaxed">
             A Universidade NutriHouse está em fase de desenvolvimento e continuará
             crescendo com novos conteúdos e funcionalidades. Nosso propósito é
             acompanhar as necessidades da empresa e ser um espaço de referência para

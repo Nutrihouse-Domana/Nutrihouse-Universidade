@@ -23,7 +23,7 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-40 bg-[#FAF9F7] shadow-sm">
+    <header className="fixed inset-x-0 top-0 z-40 bg-[#FAF9F7] shadow-sm border-b-0">
       <div className="mx-auto flex max-w-screen-xl items-center justify-between px-8 py-4">
         {/* Logo à esquerda */}
         <div className="flex items-center">
@@ -74,14 +74,14 @@ const Header = () => {
               Olá, <strong>{username}</strong>
             </span>
             <img src={User} alt="User" className="h-5 w-5 cursor-pointer" />
-            
+
             {/* logout */}
             {isMenuOpen && (
-              <div className="absolute right-0 top-1 bg-transparent w-60 p-2">
+              <div className="absolute right-0 top-1 bg-transparent w-38 p-2">
                 <button
                   onClick={handleLogout}
-                  className="flex items-center gap-2 w-full px-10 py-2 text-sm font-poppins 
-                 text-white bg-gradient-to-b from-[#B95758] to-[#e14d3a] rounded-lg hover:bg-red-700 transition-colors">
+                  className="flex items-center justify-center gap-2 w-full px-2 py-2 text-sm font-poppins 
+                 text-white bg-black rounded-lg hover:bg-red-700 transition-colors">
                   <img src={ExitIcon} alt="Exit" className="h-6 w-6" /> {/* Ícone de saída */}
                   Encerrar Sessão
                 </button>
@@ -95,6 +95,3 @@ const Header = () => {
 };
 
 export default Header;
-
-
-
