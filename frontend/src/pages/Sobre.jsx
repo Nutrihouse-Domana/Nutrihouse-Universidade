@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
+import Doll from "../assets/images/doll.png";
+import Book from "../assets/images/book.png";
+import Clock from "../assets/images/clock.png";
+import List from "../assets/images/list.png"
+import Play from "../assets/images/play-button.png";
+import Onda from "../assets/images/background_onda3.jpg";
 
 const Sobre = () => {
   const [username, setUsername] = useState("Usuário");
@@ -7,82 +13,105 @@ const Sobre = () => {
   useEffect(() => {
     const stored = localStorage.getItem("username");
     if (stored && stored !== "undefined") setUsername(stored);
-
-    document.body.style.overflowY = "auto";  // Rolagem forçada consertar depois 
-
-  }, []); 
+    document.body.style.overflowY = "auto";
+  }, []);
 
   return (
-    <main 
-      className="bg-[#FAF9F7] pt-24 px-8 min-h-screen overflow-y-scroll">
-      {/* Header fixo */}
+    <main className="h-screen bg-[#FAF9F7] pt-24 px-6 min-h-screen overflow-y-scroll(right)">
+      {/* Onda no canto superior direito */}
+      <div className="absolute top-0 right-0 z-0">
+        <img src={Onda} alt="Onda" className="w-48 md:w-70" />
+      </div>
+
+
       <Header username={username} />
 
-      <div className="bg-[#FAF9F7] max-w-6xl mx-auto">
-        {/* Hero / Capa */}
-        <section className="bg-gradient-to-r text-white py-24 px-6 text-center rounded-lg shadow-xl">
-          <h1 className="text-5xl font-bold mb-8">Universidade NutriHouse</h1>
-          <p className="text-lg max-w-3xl mx-auto leading-relaxed">
-            Um espaço digital desenvolvido pela <strong>NutriHouse</strong> para
-            automatizar e facilitar o acesso a conteúdos de aprendizado, treinamentos
-            e capacitação dos nossos colaboradores e parceiros.
-          </p>
-        </section>
+      <div className="max-w-5xl mx-auto relative">
+      {/* Hero + Missão e Visão lado a lado */}
+      <section className="grid md:grid-cols-2 gap-8 items-center my-14">
+        {/* Coluna esquerda → Doll */}
+        <div className="flex justify-center md:justify-start">
+          <img
+            src={Doll}
+            alt="Aluna estudando"
+            className="auto drop-shadow-lg"
+          />
+        </div>
 
-        {/* Seção Missão e Visão */}
-        <section className="max-w-6xl mx-auto py-16 px-6 grid md:grid-cols-2 gap-12">
-          <div className="bg-[#e14d3a] rounded-2xl hover:shadow-2xl transition-all duration-300 p-8">
-            <h2 className="text-3xl font-poppins text-gray-800 mb-4">NOSSA MISSÃO</h2>
-            <p className="text-white leading-relaxed">
-              Promover um ambiente de aprendizado moderno, acessível e integrado ao
-              dia a dia da NutriHouse, reforçando o compromisso com qualidade,
-              inovação e o desenvolvimento contínuo de nossas equipes.
+        {/* Missão e Visão */}
+        <div className="space-y-6">
+          <div className="bg-white p-6 rounded-xl shadow text-center">
+            <h2 className="text-xl font-bold text-[#e14d3a] mb-3">NOSSA MISSÃO</h2>
+            <p className="text-gray-800 leading-relaxed text-sm md:text-base">
+              Promover um ambiente de aprendizado moderno, acessível e integrado
+              ao dia a dia da NutriHouse, com foco em qualidade, inovação e
+              desenvolvimento contínuo.
             </p>
           </div>
-          <div className="bg-[#e14d3a] rounded-2xl  hover:shadow-2xl transition-all duration-300 p-8">
-            <h2 className="text-3xl font-poppins text-gray-800 mb-4">NOSSA VISÃO</h2>
-            <p className="text-white leading-relaxed">
-              Ser referência em educação corporativa na área de alimentação, atuando
-              como um hub central de conhecimento que fortalece pessoas, processos e a
-              excelência em nossos serviços.
+
+          <div className="bg-white p-6 rounded-xl shadow text-center">
+            <h2 className="text-xl font-bold text-[#e14d3a] mb-3">NOSSA VISÃO</h2>
+            <p className="text-gray-800 leading-relaxed text-sm md:text-base">
+              Ser referência em educação corporativa em alimentação, atuando
+              como hub central de conhecimento que fortalece pessoas, processos
+              e serviços.
             </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Seção O que você encontra */}
-        <section className="bg-[#FAF9F7] py-10 px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-poppins text-gray-800 mb-8">
-              O QUE VOCÊ ENCONTRA NA PLATAFORMA
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
-              <div className="bg-[#e14d3a] rounded-xl shadow p-6 hover:shadow-2xl transition-all duration-300">
-                <p className="text-white">Cursos e treinamentos organizados</p>
-              </div>
-              <div className="bg-[#e14d3a] rounded-xl shadow p-6 hover:shadow-2xl transition-all duration-300">
-                <p className="text-white">Conteúdos em vídeo práticos e acessíveis</p>
-              </div>
-              <div className="bg-[#e14d3a] rounded-xl shadow p-6 hover:shadow-2xl transition-all duration-300">
-                <p className="text-white">Materiais de apoio e guias digitais</p>
-              </div>
-              <div className="bg-[#e14d3a] rounded-xl shadow p-6 hover:shadow-2xl transition-all duration-300">
-                <p className="text-white">Atualizações frequentes e novos módulos</p>
-              </div>
+
+        {/* O que você encontra */}
+        <section className="bg-white p-8 rounded-xl shadow my-12">
+          <h2 className="text-xl md:text-2xl font-bold text-[#e14d3a] mb-10 text-center">
+            O QUE VOCÊ ENCONTRA NA PLATAFORMA
+          </h2>
+          <div className="space-y-6">
+            {/* Item 1 */}
+            <div className="flex items-center gap-4">
+              <img
+                src={List}
+                alt="Cursos"
+                className="w-10 h-10"
+              />
+              <p className="text-gray-700 text-sm md:text-base">
+                Cursos e treinamentos organizados
+              </p>
+            </div>
+            {/* Item 2 */}
+            <div className="flex items-center gap-4">
+              <img
+                src={Play}
+                alt="Vídeos"
+                className="w-10 h-10"
+              />
+              <p className="text-gray-700 text-sm md:text-base">
+                Vídeos práticos e acessíveis
+              </p>
+            </div>
+            {/* Item 3 */}
+            <div className="flex items-center gap-4">
+              <img
+                src={Book}
+                alt="Materiais"
+                className="w-10 h-10"
+              />
+              <p className="text-gray-700 text-sm md:text-base">
+                Materiais de apoio digitais
+              </p>
+            </div>
+            {/* Item 4 */}
+            <div className="flex items-center gap-4">
+              <img
+                src={Clock}
+                alt="Atualizações"
+                className="w-10 h-10"
+              />
+              <p className="text-gray-700 text-sm md:text-base">
+                Atualizações frequentes e novos módulos
+              </p>
             </div>
           </div>
-        </section>
-
-        {/* Seção de evolução */}
-        <section className="max-w-4xl bg-[#e14d3a] rounded-xl shadow p-6 hover:shadow-2xl transition-all duration-300 mx-auto py-16 px-6 text-center">
-          <h2 className="text-3xl font-poppins text-gray-800 mb-6">
-            EM CONSTANTE EVOLUÇÃO 
-          </h2>
-          <p className="text-lg text-white leading-relaxed">
-            A Universidade NutriHouse está em fase de desenvolvimento e continuará
-            crescendo com novos conteúdos e funcionalidades. Nosso propósito é
-            acompanhar as necessidades da empresa e ser um espaço de referência para
-            aprendizado e capacitação contínua.
-          </p>
         </section>
       </div>
     </main>
