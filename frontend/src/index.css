@@ -17,6 +17,7 @@ html, body {
   overflow: hidden;
   height: 100vh; 
 }
+
 .sobre {
   overflow-y: auto;
   height: auto;
@@ -31,4 +32,16 @@ code {
 .Carousel{
     margin-top: 6rem;
     width: 75%;
+}
+
+.footer {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+.footer > div {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
 }

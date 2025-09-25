@@ -39,20 +39,20 @@ const Home = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("username"); // Remove o usuário do localStorage
-    navigate("/"); // Redireciona para a página de login
+    localStorage.removeItem("username"); 
+    navigate("/"); 
   };
 
   return (
-    <main className=" overflow-hidden bg-[#FAF9F7] flex flex-col">
+    <main className=" overflow-hidden bg-[#FAF9F7] flex flex-col min-h-screen pt-[80px]">
       <Header username={username} setIsMenuOpen={setIsMenuOpen} />
 
       <section className="flex flex-col justify-center items-center flex-1 relative">
-        <div className="w-full max-w-[1200px] px-6 flex flex-col justify-between h-full">
+        <div className="w-full max-w-[1200px] px-6 flex flex-col justify-between h-full pt-10">
           <Outlet />
 
           {/* Grid de cards */}
-          <div className="relative flex-1 flex flex-col justify-center">
+          <div className="relative flex-1 flex flex-col justify-center items-center pt-10">
             <div className="grid grid-cols-3 gap-6">
               {current.map((item) => (
                 <div key={item.id} className="flex justify-center">
@@ -73,7 +73,7 @@ const Home = () => {
               <button
                 onClick={() => setPage(page > 0 ? page - 1 : total - 1)}
                 aria-label="Voltar para a página anterior"
-                className="w-12 h-12 ml-4 rounded-full bg-white/70 hover:bg-black/15 flex items-center justify-center text-3xl leading-none text-black shadow transition focus:outline-none"
+                className="absolute left-[-2rem] top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/70 hover:bg-black/15 flex items-center justify-center text-3xl text-black shadow transition"
               >
                 ‹
               </button>
@@ -82,15 +82,15 @@ const Home = () => {
               <button
                 onClick={() => setPage(page < total - 1 ? page + 1 : 0)}
                 aria-label="Avançar para a próxima página"
-                className="w-12 h-12 mr-4 rounded-full bg-white/70 hover:bg-black/15 flex items-center justify-center text-3xl leading-none text-black shadow transition focus:outline-none"
+                className="absolute right-[-2rem] top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/70 hover:bg-black/15 flex items-center justify-center text-3xl text-black shadow transition"
               >
                 ›
               </button>
             </div>
           </div>
 
-          {/* Paginação alinhada */}
-          <div className="flex justify-center items-center py-4">
+          {/* Paginação */}
+          <div className="flex justify-center items-center mb-2">
             <button
               onClick={() => setPage(page > 0 ? page - 1 : total - 1)}
               className="px-4 py-2 mx-2 border rounded"
