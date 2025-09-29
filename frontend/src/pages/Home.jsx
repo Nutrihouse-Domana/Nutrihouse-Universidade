@@ -44,7 +44,7 @@ const Home = () => {
   };
 
   return (
-    <main className=" overflow-hidden bg-[#FAF9F7] flex flex-col min-h-screen pt-[80px]">
+    <main className="bg-[#FAF9F7] flex flex-col min-h-screen pt-[80px]">
       <Header username={username} setIsMenuOpen={setIsMenuOpen} />
 
       <section className="flex flex-col justify-center items-center flex-1 relative">
@@ -53,18 +53,26 @@ const Home = () => {
 
           {/* Grid de cards */}
           <div className="relative flex-1 flex flex-col justify-center items-center pt-10">
-            <div className="grid grid-cols-3 gap-6">
-              {current.map((item) => (
-                <div key={item.id} className="flex justify-center">
-                  <CarouselCard
-                    id={item.id}
-                    title={item.title}
-                    icon={item.image}
-                    description={item.description}
-                    onClick={() => handleCardClick(item.id)}
-                  />
-                </div>
-              ))}
+            <div className="grid grid-cols-3 gap-6 items-stretch">
+              {Array.from({ length: PAGE_SIZE }).map((_, index) => {
+                const item = current[index];
+                return item ? (
+                  <div key={item.id} className="flex justify-center h-full">
+                    <CarouselCard
+                      id={item.id}
+                      title={item.title}
+                      icon={item.image}
+                      description={item.description}
+                      onClick={() => handleCardClick(item.id)}
+                      className="h-[180px]"
+                    />
+                  </div>
+                ) : (
+                  <div key={`empty-${index}`} className="flex justify-center opacity-0">
+                    <CarouselCard title="" icon="" description="" />
+                  </div>
+                );
+              })}
             </div>
 
             {/* Setas nas extremidades da tela */}

@@ -12,10 +12,13 @@ html, body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 .home {
-  overflow: hidden;
-  height: 100vh; 
+  overflow: auto;
+  height: auto; 
+  min-height: 100vh;
+
 }
 
 .sobre {

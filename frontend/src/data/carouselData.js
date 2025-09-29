@@ -5,6 +5,7 @@ import iconMilvus from "../assets/icons_cards/icon_milvus.png";
 import iconProtheus from "../assets/icons_cards/icon_protheus.png";
 import iconTeknisa from "../assets/icons_cards/icon_teknisa.png";
 import iconIA from "../assets/icons_cards/icon_IA.png";
+import iconFormacaoLid from "../assets/icons_cards/icon_lideranca.png"
 
 const carouselData = [
   {
@@ -38,6 +39,33 @@ const carouselData = [
     title: "Teknisa",
     image: iconTeknisa,
   },
+  {
+    id: 7,
+    title: "Formação em Liderança",
+    image: iconFormacaoLid,
+  },
+  {
+    id: 8,
+    title: "Teknisa",
+    image: iconTeknisa,
+  },
+  {
+    id: 9,
+    title: "Teknisa",
+    image: iconTeknisa,
+  },
+  {
+    id: 10,
+    title: "Teknisa",
+    image: iconTeknisa,
+  },
+  {
+    id: 11,
+    title: "foddsfslfeflçefkçsefmeçfope",
+    image: iconTeknisa,
+  },
 ];
+
+
 
 export default carouselData;
