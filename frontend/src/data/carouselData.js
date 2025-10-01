@@ -5,7 +5,9 @@ import iconMilvus from "../assets/icons_cards/icon_milvus.png";
 import iconProtheus from "../assets/icons_cards/icon_protheus.png";
 import iconTeknisa from "../assets/icons_cards/icon_teknisa.png";
 import iconIA from "../assets/icons_cards/icon_IA.png";
-import iconFormacaoLid from "../assets/icons_cards/icon_lideranca.png"
+import iconFormacaoLid from "../assets/icons_cards/icon_lideranca.png";
+import iconSmark from "../assets/icons_cards/icon_smark2.png";
+
 
 const carouselData = [
   {
@@ -46,22 +48,22 @@ const carouselData = [
   },
   {
     id: 8,
-    title: "Teknisa",
-    image: iconTeknisa,
+    title: "SMARK CRM - Gestão de Vendas",
+    image: iconSmark,
   },
   {
     id: 9,
-    title: "Teknisa",
-    image: iconTeknisa,
+    title: "SMARK CRM - Primeiros Passos",
+    image: iconSmark,
   },
   {
     id: 10,
-    title: "Teknisa",
+    title: "Teknisa - Manuais",
     image: iconTeknisa,
   },
   {
     id: 11,
-    title: "foddsfslfeflçefkçsefmeçfope",
+    title: "Teknisa - Implantação ",
     image: iconTeknisa,
   },
 ];
