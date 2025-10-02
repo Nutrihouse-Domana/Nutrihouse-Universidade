@@ -17,6 +17,16 @@ const Header = () => {
     );
   }, []);
 
+  useEffect(() => {
+    let timeoutId;
+    if (isMenuOpen) {
+      timeoutId = setTimeout(() => {
+        setIsMenuOpen(false);
+      }, 4000); 
+    }
+    return () => clearTimeout(timeoutId);
+  }, [isMenuOpen]);
+
   const handleLogout = () => {
     localStorage.removeItem("username"); 
     navigate("/"); // Redireciona para a página de login
@@ -73,16 +83,17 @@ const Header = () => {
             >
               Olá, <strong>{username}</strong>
             </span>
-            <img src={User} alt="User" className="h-5 w-5 cursor-pointer" />
+            <img src={User} alt="User" className="h-5 w-5 cursor-pointer" 
+            onClick={() => setIsMenuOpen((prev) => !prev)} />
 
             {/* logout */}
             {isMenuOpen && (
-              <div className="absolute right-0 top-1 bg-transparent w-38 p-2">
+              <div className="absolute right-2 top-6 bg-transparent w-38 p-2">
                 <button
                   onClick={handleLogout}
                   className="flex items-center justify-center gap-2 w-full px-2 py-2 text-sm font-poppins 
-                 text-white bg-black rounded-lg hover:bg-red-700 transition-colors">
-                  <img src={ExitIcon} alt="Exit" className="h-6 w-6" /> {/* Ícone de saída */}
+                 text-white font-extrabold bg-black rounded-lg hover:bg-red-700 transition-colors">
+                  <img src={ExitIcon} alt="Exit" className="h-6 w-6" />
                   Encerrar Sessão
                 </button>
               </div>

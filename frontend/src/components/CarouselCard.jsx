@@ -20,7 +20,7 @@ const CarouselCard = ({ id, title, icon }) => {
           alt={title}
           className="w-24 h-24 object-contain"
         />
-        <h1 className="font-poppins text-2x1 font-semibold">{title}</h1>
+        <h1 className="text-2x1 font-bold">{title}</h1>
       </div>
     </button>
   );

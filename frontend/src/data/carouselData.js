@@ -66,6 +66,37 @@ const carouselData = [
     title: "Teknisa - Implantação ",
     image: iconTeknisa,
   },
+  {
+    id: 12,
+    title: "Introdução ao ChatGPT Pro",
+    image: iconChatGPT ,
+  },
+  {
+    id: 13,
+    title: "Domaná",
+    image: iconDomana,
+  },
+  {
+    id: 14,
+    title: "Inteligência Artificial",
+    image: iconIA,
+  },
+  {
+    id: 15,
+    title: "Milvus",
+    description: "Descrição do card 4",
+    image: iconMilvus,
+  },
+  {
+    id: 16,
+    title: "Protheus",
+    image: iconProtheus,
+  },
+  {
+    id: 17,
+    title: "Teknisa",
+    image: iconTeknisa,
+  }
 ];
 
 

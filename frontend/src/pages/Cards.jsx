@@ -25,7 +25,7 @@ const Cards = () => {
           {carouselData.map((item, index) => (
             <div key={index} className="w-full h-full flex justify-center">
               <CarouselCard
-                title={item.title}
+                title={item.title} 
                 description={item.description}
                 icon={item.image}
                 className="h-[180px]" // 🔹 altura fixa uniforme

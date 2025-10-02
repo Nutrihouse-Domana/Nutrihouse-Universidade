@@ -4,11 +4,11 @@ import { Outlet } from "react-router-dom";
 import CarouselCard from "../components/CarouselCard";
 import carouselData from "../data/carouselData";
 import Header from "../components/Header";
-import Chatbot from "../assets/images/chatbot.png";
+import Chatbot from "../components/Chatbot";
+
 
 const PAGE_SIZE = 6;
 
-// Função chunk reescrita
 const chunk = (arr, size) => {
   const result = [];
   for (let i = 0; i < arr.length; i += size) {
@@ -23,6 +23,7 @@ const Home = () => {
   const [showTooltip, setShowTooltip] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const [isChatbotOpen, setIsChatbotOpen] = useState(false);
 
   useEffect(() => {
     const stored = localStorage.getItem("username");
@@ -37,15 +38,6 @@ const Home = () => {
     navigate(`/videos/${id}`);
   };
 
-  const handleChatbotClick = () => {
-    setShowTooltip(true);
-    setTimeout(() => setShowTooltip(false), 3000); // Esconde após 3s
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem("username");
-    navigate("/");
-  };
 
   return (
     <main className="bg-[#FAF9F7] flex flex-col min-h-screen pt-[70px]">
@@ -116,29 +108,14 @@ const Home = () => {
             </div>
           </div>
 
-        </div> {/* Fecha o div com className="w-full max-w..." */}
-      </section> {/* Fecha a section aberta lá em cima */}
+        </div> 
+      </section> 
 
-      {/* Tooltip do chatbot */}
-      {showTooltip && (
-        <div className="fixed bottom-[95px] right-16 z-50 w-20 flex justify-center">
-          <div className="relative bg-black text-white text-sm px-4 py-2 rounded shadow-lg">
-            Funcionalidade ainda não disponível
-            <div className="absolute bottom-[-6px] right-4 w-0 h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-t-8 border-t-black" />
-          </div>
-        </div>
-      )}
-
-      {/* Botão flutuante do Chatbot */}
-      <button
-        onClick={handleChatbotClick}
-        className="fixed bottom-0 right-6 z-50 w-16 md:w-15 lg:w-15 aspect-square rounded-full bg-yellow-500 shadow-lg hover:bg-yellow-400 transition grid place-items-center"
-        aria-label="Abrir Chatbot"
-      >
-        <img src={Chatbot} alt="Chatbot" className="w-7 h-7 md:w-8 md:h-8" />
-      </button>
+      {/* Chatbot */}
+      <Chatbot />
     </main>
   );
 };
+
 
 export default Home;
