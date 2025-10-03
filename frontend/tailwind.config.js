@@ -5,9 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
-      sans: ["Inter", "ui-sans-serif", "system-ui"],
-        poppins: ["Poppins", "sans-serif"],
-        roboto: ["Roboto", "sans-serif"],
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif'],
+      },
     },
   },
   plugins: [],

@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../index.css"
 
-const CarouselCard = ({ id, title, icon }) => {
+const CarouselCard = ({ id, title, icon, onClick }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -13,7 +13,7 @@ const CarouselCard = ({ id, title, icon }) => {
     <button
       onClick={handleClick}
       className="flex items-center justify-center bg-gradient-to-b from-[#B95758] to-[#e14d3a] 
-           text-white shadow-2xl rounded-lg w-full max-w-sm h-25 p-5 m-1">
+           text-white shadow-2xl font-poppins text-1xl rounded-lg w-full max-w-sm h-25 p-5 m-1">
       <div className="flex items-center space-x-1">
         <img
           src={icon}
@@ -27,3 +27,4 @@ const CarouselCard = ({ id, title, icon }) => {
 };
 
 export default CarouselCard;
+

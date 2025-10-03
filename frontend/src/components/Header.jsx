@@ -88,7 +88,7 @@ const Header = () => {
 
             {/* logout */}
             {isMenuOpen && (
-              <div className="absolute right-2 top-6 bg-transparent w-38 p-2">
+              <div className="absolute right-4 top-2 bg-transparent w-38 p-2">
                 <button
                   onClick={handleLogout}
                   className="flex items-center justify-center gap-2 w-full px-2 py-2 text-sm font-poppins 

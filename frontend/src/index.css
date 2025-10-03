@@ -3,30 +3,22 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
   overflow-y: auto;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Poppins', sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
 }
-.paginacao-container {
+
+.paginacao-container { 
   display: flex;
   justify-content: center;
   align-items: center;      
   height: 100%;        
-}
-.home {
-  overflow: auto;
-  height: auto; 
-  min-height: 100vh;
-
 }
 
 .sobre {
@@ -34,10 +26,8 @@ html, body {
   height: auto;
 }
 
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.code {
+  font-family: 'Poppins', sans-serif !important;
 }
 
 .Carousel{
@@ -55,4 +45,7 @@ code {
   margin: 0 !important;
   padding: 0 !important;
   width: 100% !important;
+}
+.login-page {
+    font-family: 'Arial', sans-serif; 
 }
