@@ -1,9 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 html, body {
+  @apply font-sans;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -27,7 +28,7 @@ html, body {
 }
 
 .code {
-  font-family: 'Poppins', sans-serif !important;
+  font-family:  'Poppins', sans-serif !important;
 }
 
 .Carousel{
@@ -47,5 +48,5 @@ html, body {
   width: 100% !important;
 }
 .login-page {
-    font-family: 'Arial', sans-serif; 
+  font-family: 'Arial', sans-serif;
 }

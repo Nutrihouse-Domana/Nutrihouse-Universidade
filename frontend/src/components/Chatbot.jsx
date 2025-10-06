@@ -49,7 +49,7 @@ function Chatbot() {
       {/* 🔹 Botão flutuante */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-5 right-6 z-50 w-16 h-16 rounded-full bg-yellow-500 shadow-lg hover:bg-yellow-400 transition grid place-items-center"
+        className="fixed bottom-1 right-6 z-50 w-16 h-16 rounded-full bg-yellow-500 shadow-lg hover:bg-yellow-400 transition grid place-items-center"
         aria-label="Abrir Chatbot"
       >
         <img src={ChatbotIcon} alt="Chatbot" className="w-8 h-8" />
@@ -70,10 +70,10 @@ function Chatbot() {
           {mensagens.map((msg, i) => (
             <div key={i} className={`flex ${msg.de === "user" ? "justify-end" : "justify-start"}`}>
               <div
-                className={`px-3 py-2 rounded-lg max-w-[75%] whitespace-pre-wrap ${
+                className={`px-3 py-2 rounded-lg max-w-[80%] whitespace-pre-wrap ${
                   msg.de === "user"
-                    ? "bg-yellow-100 text-gray-800"
-                    : "bg-gray-100 text-gray-800"
+                    ? "bg-yellow-100 text-gray-800 text-sm"
+                    : "bg-gray-100 text-gray-800 text-sm"
                 }`}
               >
                 {msg.texto}
@@ -83,7 +83,7 @@ function Chatbot() {
         </div>
 
         {/* Campo de entrada */}
-        <div className="p-3 border-t bg-gray-50 flex gap-2">
+        <div className="p-2 border-t bg-gray-50 flex gap-2">
           <input
             type="text"
             value={entrada}

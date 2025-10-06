@@ -1,31 +1,16 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-
+import { useParams, useNavigate} from "react-router-dom";
+import Sidebar from "../components/Sidebar_VideoPage.jsx";
 
 const VideoPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+
 
   return (
     <div className="min-h-screen bg-gray-50 flex">
-      {/* Sidebar fixa */}
-      <div
-        className="w-72 text-white p-6 fixed top-0 left-0 h-full"
-        style={{ background: "linear-gradient(to bottom, #B95758, #e14d3a)" }}
-      >
-        <h2 className="text-lg font-semibold mb-6 uppercase">MÓDULOS</h2>
-        <ul className="space-y-4">
-          <li>Aula 01 - Bem Vindo</li>
-          <li>Aula 02 - Liderança</li>
-          <li>Aula 03 - Desenvolvimento</li>
-          <li>Aula 04 - Propósito</li>
-          <li>Aula 05 - Estilos</li>
-          <li>Aula 06 - Bônus</li>
-        </ul>
-
-        <button className="mt-10 w-full bg-white text-red-600 font-semibold py-2 px-4 rounded-lg shadow hover:bg-gray-100 transition">
-          Material de Apoio
-        </button>
-      </div>
+      {/* Sidebar */}
+      <Sidebar />
 
       {/* Conteúdo principal */}
       <div className="flex-1 ml-72 p-8 flex flex-col items-center">
