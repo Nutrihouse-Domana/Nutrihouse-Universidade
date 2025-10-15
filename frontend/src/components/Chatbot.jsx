@@ -14,7 +14,7 @@ function Chatbot() {
     const opcoes = Object.entries(chatbotData[nomeMenu])
       .map(([key, val]) => `${key} - ${val.texto}`)
       .join("\n");
-    return `Digite a opção desejada:\n${opcoes}`;
+    return `Em que posso te ajudar? Digite a opção desejada:\n${opcoes}`;
   }
 
   const handleSend = () => {
@@ -49,7 +49,7 @@ function Chatbot() {
       {/* 🔹 Botão flutuante */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-1 right-6 z-50 w-16 h-16 rounded-full bg-yellow-500 shadow-lg hover:bg-yellow-400 transition grid place-items-center"
+        className="fixed bottom-4 right-6 z-40 w-16 h-16 rounded-full bg-yellow-500 shadow-lg hover:bg-yellow-400 transition grid place-items-center"
         aria-label="Abrir Chatbot"
       >
         <img src={ChatbotIcon} alt="Chatbot" className="w-8 h-8" />

@@ -1,18 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html, body {
-  @apply font-sans;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-y: auto;
-  font-family: 'Poppins', sans-serif !important;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 
+@layer base {
+  * {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+  }
+
+  html, body, #root {
+    font-family: 'Poppins', sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .paginacao-container { 
@@ -25,6 +31,7 @@ html, body {
 .sobre {
   overflow-y: auto;
   height: auto;
+  
 }
 
 .code {
@@ -34,6 +41,7 @@ html, body {
 .Carousel{
     margin-top: 6rem;
     width: 75%;
+    
 }
 
 .footer {
@@ -47,6 +55,7 @@ html, body {
   padding: 0 !important;
   width: 100% !important;
 }
+
 .login-page {
   font-family: 'Arial', sans-serif;
-}
+} 

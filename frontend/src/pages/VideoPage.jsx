@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams, useNavigate} from "react-router-dom";
-import Sidebar from "../components/Sidebar_VideoPage.jsx";
+import Sidebar from "../components/Sidebar.jsx";
 
 const VideoPage = () => {
   const { id } = useParams();
@@ -20,7 +20,7 @@ const VideoPage = () => {
         </h1>
 
         {/* Player gigante, quase tela cheia */}
-        <div className="w-full h-[70vh] max-h-[80vh] aspect-video bg-black rounded-xl shadow-2xl overflow-hidden mb-8">
+        <div className="w-full h-[60vh] max-h-[80vh] aspect-video bg-black rounded-xl shadow-2xl overflow-hidden mb-10">
           <video className="w-full h-full object-contain" controls>
             <source src="" type="video/mp4" />
             Seu navegador não suporta vídeo.

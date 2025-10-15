@@ -1,0 +1,19 @@
+/* Importa os arquivos locais da fonte */
+@import "@fontsource/poppins/400.css";
+@import "@fontsource/poppins/500.css";
+@import "@fontsource/poppins/600.css";
+
+html, body {
+  font-family: "Poppins", sans-serif;
+  background-color: #FAF9F7;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app {
+  text-align: center;
+}

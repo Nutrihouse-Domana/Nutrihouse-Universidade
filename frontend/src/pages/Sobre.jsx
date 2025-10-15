@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
-import Doll from "../assets/images/doll.png";
+import Doll from "../assets/images/doll2.png";
 import Book from "../assets/images/book.png";
 import Clock from "../assets/images/clock.png";
 import List from "../assets/images/list.png";
 import Play from "../assets/images/play-button.png";
-import Onda from "../assets/images/background_onda3.jpg";
-import Logo from "../assets/logos/logo_rodape.png"; 
-import Instagram from "../assets/images/instagram.png";
-import Linkedin from "../assets/images/linkedin.png";
+import Onda1 from "../assets/images/background_onda3.jpg";
+import Onda2 from "../assets/images/background_onda4.jpg";
+import Footer from "../components/Footer.jsx"
 
 
 const Sobre = () => {
@@ -24,12 +23,22 @@ const Sobre = () => {
     <main className="h-screen bg-[#FAF9F7] min-h-screen flex flex-col overflow-y-scroll(right)">
       {/* Onda no canto superior direito */}
       <div className="absolute top-0 right-0 z-0 flex-grow">
-        <img src={Onda} alt="Onda" className="w-48 md:w-70" />
+        <img 
+          src={Onda1} 
+          alt="Onda dir" 
+          className="w-48 md:w-70" />
       </div>
       
+      {/* Onda superior esquerda */}
+            <img
+              src={Onda2}
+              alt="Onda esq"
+              className="absolute top-0 left-0 w-auto h-[40%] max-w-[50%] object-contain z-0"
+            />
+
       <Header username={username} />
 
-      <div className="max-w-5xl mx-auto relative">
+      <div className="max-w-5xl relative ml-2 md:ml-24">
         {/* Hero + Missão e Visão lado a lado */}
         <section className="grid md:grid-cols-2 gap-8 items-center my-14">
           {/* Coluna esquerda → Doll */}
@@ -103,36 +112,7 @@ const Sobre = () => {
       </div>
 
       {/* Rodapé */}
-      <footer className="bg-[#80B5B4] border-t w-screen py-6">
-        <div className="grid md:grid-cols-3 gap-16 text-gray-700 w-full justify-items-center">
-          {/* Coluna 1 - Logo */}
-          <div className="flex flex-col items-center md:items-start">
-            <img src={Logo} alt="NutriHouse Logo" className="w-24 mb-5" />
-            <span className="text-sm">
-              © {new Date().getFullYear()} NutriHouse. Todos os direitos reservados.
-            </span>
-          </div>
-
-          {/* Coluna 2 - Contato */}
-          <div>
-            <h4 className="font-bold mb-3">Contato</h4>
-            <p>Email: suporte@nutrihouse.com</p>
-          </div>
-
-          {/* Coluna 3 - Redes sociais */}
-          <div>
-            <h4 className="font-bold mb-3">Redes sociais</h4>
-            <div className="flex gap-4">
-              <a href="https://www.instagram.com/nutrihousequalidade/" target="_blank" rel="noopener noreferrer">
-                <img src={Instagram} alt="Instagram" className="w-8 h-8" />
-              </a>
-              <a href="https://www.linkedin.com/company/nutrihouse/posts/?feedView=all" target="_blank" rel="noopener noreferrer">
-                <img src={Linkedin} alt="LinkedIn" className="w-8 h-8" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 };

@@ -39,7 +39,7 @@ const Home = () => {
   };
 
   return (
-    <main className="bg-[#FAF9F7] flex flex-col min-h-screen pt-[70px] ">
+    <main className="bg-[#FAF9F7] flex flex-col min-h-screen pt-[70px] font-sans">
       <Header username={username} />
 
       <section className="relative flex flex-col justify-center items-center flex-1">

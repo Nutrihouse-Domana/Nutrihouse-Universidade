@@ -88,11 +88,11 @@ const Header = () => {
 
             {/* logout */}
             {isMenuOpen && (
-              <div className="absolute right-4 top-2 bg-transparent w-38 p-2">
+              <div className="absolute right-5 top-6 bg-transparent w-38 p-2">
                 <button
                   onClick={handleLogout}
                   className="flex items-center justify-center gap-2 w-full px-2 py-2 text-sm font-poppins 
-                 text-white font-extrabold bg-black rounded-lg hover:bg-red-700 transition-colors">
+                 text-white font-bold bg-black rounded-lg hover:bg-[linear-gradient(135deg,_#B95758,_#e14d3a)] transition-colors">
                   <img src={ExitIcon} alt="Exit" className="h-6 w-6" />
                   Encerrar Sessão
                 </button>

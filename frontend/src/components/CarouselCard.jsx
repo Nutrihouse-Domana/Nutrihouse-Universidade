@@ -12,7 +12,8 @@ const CarouselCard = ({ id, title, icon, onClick }) => {
   return (
     <button
       onClick={handleClick}
-      className="flex items-center justify-center bg-gradient-to-b from-[#B95758] to-[#e14d3a] 
+      className="flex items-center justify-center 
+          bg-[linear-gradient(135deg,_#B95758,_#e14d3a)]   
            text-white shadow-2xl font-poppins text-1xl rounded-lg w-full max-w-sm h-25 p-5 m-1">
       <div className="flex items-center space-x-1">
         <img
