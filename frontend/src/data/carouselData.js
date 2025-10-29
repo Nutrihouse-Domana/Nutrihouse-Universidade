@@ -5,38 +5,100 @@ import iconMilvus from "../assets/icons_cards/icon_milvus.png";
 import iconProtheus from "../assets/icons_cards/icon_protheus.png";
 import iconTeknisa from "../assets/icons_cards/icon_teknisa.png";
 import iconIA from "../assets/icons_cards/icon_IA.png";
+import iconFormacaoLid from "../assets/icons_cards/icon_lideranca.png";
+import iconSmark from "../assets/icons_cards/icon_smark2.png";
+
 
 const carouselData = [
   {
+    id: 1,
     title: "Introdução ao ChatGPT Pro",
-    description: "Descrição do card 1",
     image: iconChatGPT ,
   },
   {
+    id: 2,
     title: "Domaná",
-    description: "Descrição do card 2",
     image: iconDomana,
   },
   {
+    id: 3,
     title: "Inteligência Artificial",
-    description: "Descrição do card 3",
     image: iconIA,
   },
   {
+    id: 4,
     title: "Milvus",
     description: "Descrição do card 4",
     image: iconMilvus,
   },
   {
+    id: 5,
     title: "Protheus",
-    description: "Descrição do card 5",
     image: iconProtheus,
   },
   {
+    id: 6,
     title: "Teknisa",
-    description: "Descrição do card 6",
     image: iconTeknisa,
   },
+  {
+    id: 7,
+    title: "Formação em Liderança",
+    image: iconFormacaoLid,
+  },
+  {
+    id: 8,
+    title: "SMARK CRM - Gestão de Vendas",
+    image: iconSmark,
+  },
+  {
+    id: 9,
+    title: "SMARK CRM - Primeiros Passos",
+    image: iconSmark,
+  },
+  {
+    id: 10,
+    title: "Teknisa - Manuais",
+    image: iconTeknisa,
+  },
+  {
+    id: 11,
+    title: "Teknisa - Implantação ",
+    image: iconTeknisa,
+  },
+  {
+    id: 12,
+    title: "Introdução ao ChatGPT Pro",
+    image: iconChatGPT ,
+  },
+  {
+    id: 13,
+    title: "Domaná",
+    image: iconDomana,
+  },
+  {
+    id: 14,
+    title: "Inteligência Artificial",
+    image: iconIA,
+  },
+  {
+    id: 15,
+    title: "Milvus",
+    description: "Descrição do card 4",
+    image: iconMilvus,
+  },
+  {
+    id: 16,
+    title: "Protheus",
+    image: iconProtheus,
+  },
+  {
+    id: 17,
+    title: "Teknisa",
+    image: iconTeknisa,
+  }
 ];
+
+
 
 export default carouselData;

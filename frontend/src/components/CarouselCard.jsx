@@ -1,16 +1,31 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import "../index.css"
 
-const CarouselCard = ({ title, icon, onClick}) => {
+const CarouselCard = ({ id, title, icon, onClick }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/video/${id}`);
+  };
+
   return (
     <button
-      onClick={onClick}
-      className="flex items-center justify-center bg-gradient-to-b from-[#B95758] to-[#e14d3a] text-white rounded-lg w-72 h-40 p-6 m-4">
-      <div className="flex items-center space-x-5">
-        <img src={icon} alt={title} className="w-20 h-20 object-contain" /> {/* Ícone */}
-        <h1 className="font-poppins text-2x2 font-semi-bold">{title}</h1> {/* Título ao lado do ícone */}
+      onClick={handleClick}
+      className="flex items-center justify-center 
+          bg-[linear-gradient(135deg,_#B95758,_#e14d3a)]   
+           text-white shadow-2xl font-poppins text-1xl rounded-lg w-full max-w-sm h-25 p-5 m-1">
+      <div className="flex items-center space-x-1">
+        <img
+          src={icon}
+          alt={title}
+          className="w-24 h-24 object-contain"
+        />
+        <h1 className="text-2x1 font-bold">{title}</h1>
       </div>
     </button>
   );
 };
 
 export default CarouselCard;
+
