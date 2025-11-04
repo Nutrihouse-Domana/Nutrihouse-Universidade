@@ -1,31 +1,38 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "../index.css"
+import "../index.css";
 
 const CarouselCard = ({ id, title, icon, onClick }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/video/${id}`);
+    if (onClick) onClick();
+    else navigate(`/video/${id}`);
   };
 
-  return (
+return (
     <button
       onClick={handleClick}
-      className="flex items-center justify-center 
-          bg-[linear-gradient(135deg,_#B95758,_#e14d3a)]   
-           text-white shadow-2xl font-poppins text-1xl rounded-lg w-full max-w-sm h-25 p-5 m-1">
-      <div className="flex items-center space-x-1">
-        <img
-          src={icon}
-          alt={title}
-          className="w-24 h-24 object-contain"
-        />
-        <h1 className="text-2x1 font-bold">{title}</h1>
-      </div>
+      className="flex flex-row items-center justify-start 
+    bg-[linear-gradient(135deg,_#B95758,_#e14d3a)]   
+    text-white shadow-xl font-poppins text-lg rounded-2xl 
+    w-72 h-44 sm:w-80 sm:h-40 p-6 mx-2 transition-transform 
+    hover:scale-105 hover:shadow-2xl duration-200"
+>
+      {/* Ícone do curso */}
+      <img
+        src={icon || "/img/default-course-icon.png"}
+        alt={title}
+        className="w-16 h-16 sm:w-20 sm:h-20 object-contain drop-shadow-lg mr-4"
+
+      />
+
+      {/* Título */}
+      <h1 className="font-semibold text-base sm:text-lg leading-snug flex-1">
+        {title}
+      </h1>
     </button>
   );
 };
 
 export default CarouselCard;
-

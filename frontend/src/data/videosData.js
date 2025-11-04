@@ -1,7 +1,7 @@
 // src/data/videosData.js
 const videosData = [
   {
-    id: "1",
+    id: 1,
     title: "Formação em Liderança",
     modules: [
       {

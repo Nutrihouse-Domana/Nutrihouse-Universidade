@@ -1,35 +1,30 @@
 import React, { useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 
-const Sidebar = ({ showButton = true }) => {
+const Sidebar = ({
+  showButton = true,
+  videos = [],
+  setSelectedVideo,
+  watchedVideos = {},
+}) => {
   const navigate = useNavigate();
   const { id } = useParams();
   const location = useLocation();
   const [mostrarTooltip, setMostrarTooltip] = useState(false);
 
-  const modulos = [
-    "Aula 01 – Bem Vindo",
-    "Aula 02 – Liderança",
-    "Aula 03 – Desenvolvimento",
-    "Aula 04 – Propósito",
-    "Aula 05 – Estilos",
-    "Aula 06 – Bônus",
-  ];
-
   const handleVoltar = () => {
     if (location.pathname.includes("/materiais")) {
-      navigate(`/video/${id || 1}`); // volta para o vídeo correspondente
+      navigate(`/video/${id || 1}`);
     } else {
-      navigate("/home"); // volta para home quando estiver em vídeo
+      navigate("/home");
     }
   };
 
   return (
     <aside className="sidebar w-72 bg-[linear-gradient(135deg,_#B95758,_#e14d3a)] text-white p-6 fixed top-0 left-0 h-full flex flex-col justify-between shadow-lg">
-      {/* Cabeçalho com seta e tooltip */}
+      {/* Cabeçalho */}
       <div className="flex items-center gap-3 mb-6 relative">
         <div
-          className="relative"
           onMouseEnter={() => setMostrarTooltip(true)}
           onMouseLeave={() => setMostrarTooltip(false)}
         >
@@ -40,19 +35,16 @@ const Sidebar = ({ showButton = true }) => {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-5 h-5 text-white hover:text-white-300 transition"
+              className="w-5 h-5 text-white"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
               strokeWidth="3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
             >
               <path d="M15 18l-6-6 6-6" />
             </svg>
           </button>
 
-          {/* Tooltip “Voltar” */}
           {mostrarTooltip && (
             <div className="absolute left-10 top-1/2 -translate-y-1/2 bg-yellow-400 text-white text-xs px-2 py-1 rounded-md shadow-md animate-fade-in select-none whitespace-nowrap">
               {location.pathname.includes("/materiais")
@@ -67,28 +59,45 @@ const Sidebar = ({ showButton = true }) => {
         </h2>
       </div>
 
-      {/* Lista de módulos com altura calculada */}
+      {/* Lista de vídeos */}
       <ul
-        className="
-          flex-1 overflow-y-auto pr-2 space-y-3 text-sm
-          scrollbar-thin scrollbar-thumb-yellow-300 scrollbar-track-transparent
-          "
-        style={{
-          height: "calc(100vh - 180px)", 
-        }}
+        className="flex-1 overflow-y-auto pr-2 space-y-3 text-sm scrollbar-thin scrollbar-thumb-yellow-300 scrollbar-track-transparent"
+        style={{ height: "calc(100vh - 180px)" }}
       >
-        {modulos.map((modulo, i) => (
+        {videos.map((video) => (
           <li
-            key={i}
-            onClick={() => navigate(`/video/${i + 1}`)}
-            className="hover:text-yellow-200 cursor-pointer transition"
+            key={video.id}
+            onClick={() => setSelectedVideo(video)}
+            className={`cursor-pointer transition flex items-center justify-between truncate ${
+              watchedVideos[video.id]
+                ? "text-green-300"
+                : "hover:text-yellow-200"
+            }`}
+            title={video.titulo || video.descricao}
           >
-            {modulo}
+            <span>{video.titulo || video.descricao}</span>
+
+            {watchedVideos[video.id] && (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-4 h-4 text-green-400 flex-shrink-0 ml-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={3}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            )}
           </li>
         ))}
       </ul>
 
-      {/* Botão Material de Apoio */}
+      {/* Botão de material */}
       {showButton && (
         <button
           onClick={() => navigate(`/materiais/${id || 1}`)}
