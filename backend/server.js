@@ -8,11 +8,11 @@ const app = express();
 
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
-console.log(' Express.json habilitado para ler JSON');
+console.log('Express.json habilitado para ler JSON');
 
 //////////////////// AUTENTICAÇÃO LDAP ////////////////////
 const authenticateWithDN = (userDN, password, callback) => {
-  console.log(' Iniciando autenticação com DN:', userDN);
+  console.log('Iniciando autenticação com DN:', userDN);
 
   const client = ldap.createClient({
     url: 'ldap://172.32.14.1:389',
@@ -21,7 +21,7 @@ const authenticateWithDN = (userDN, password, callback) => {
   });
 
   client.on('error', (err) => {
-    console.error(' Erro de conexão LDAP:', err.message);
+    console.error('Erro de conexão LDAP:', err.message);
     callback(false);
   });
 
@@ -41,7 +41,7 @@ const authenticateWithDN = (userDN, password, callback) => {
 // Rota de autenticação LDAP
 app.post('/authenticate', (req, res) => {
   const { userDN, password } = req.body;
-  console.log(' Requisição recebida em /authenticate:', userDN);
+  console.log('Requisição recebida em /authenticate:', userDN);
 
   authenticateWithDN(userDN, password, (isAuthenticated) => {
     if (isAuthenticated) {
@@ -74,7 +74,7 @@ const dbConfig = {
 
 //////////////////// ROTAS SQL ////////////////////
 
-// Retorna todos os cursos com link do ícone (via IIS)
+// Retorna todos os cursos
 app.get('/api/cursos', async (req, res) => {
   try {
     const pool = await sql.connect(dbConfig);
@@ -82,7 +82,6 @@ app.get('/api/cursos', async (req, res) => {
       .request()
       .query('SELECT id, titulo, caminho, icon, caminho_icon FROM cursos');
 
-    // Mapeia os cursos com URL pública (via IIS)
     const cursos = result.recordset.map((curso) => ({
       id: curso.id,
       titulo: curso.titulo,
@@ -94,17 +93,19 @@ app.get('/api/cursos', async (req, res) => {
 
     res.json(cursos);
   } catch (err) {
-    console.error(' Erro ao buscar cursos:', err.message);
+    console.error('Erro ao buscar cursos:', err.message);
     res.status(500).json({ error: 'Erro ao buscar cursos' });
   }
 });
 
-// Retorna vídeos de um curso (via IIS)
+// Retorna vídeos de um curso (com ou sem módulos)
 app.get('/api/videos/:id_curso', async (req, res) => {
   const { id_curso } = req.params;
 
   try {
     const pool = await sql.connect(dbConfig);
+
+    // Busca curso
     const cursoResult = await pool
       .request()
       .input('id', sql.Int, id_curso)
@@ -115,27 +116,86 @@ app.get('/api/videos/:id_curso', async (req, res) => {
     }
 
     const { caminho } = cursoResult.recordset[0];
-    const pastaCurso = path.basename(caminho); // Ex: DomanaCP
+    const pastaCurso = path.basename(caminho);
     const baseURL = `http://NHBD02/videos/${pastaCurso}`;
 
-    // Busca os vídeos no banco
-    const result = await pool
+    // Busca módulos
+    const modulosResult = await pool
       .request()
       .input('id_curso', sql.Int, id_curso)
-      .query('SELECT id, id_curso, titulo, descricao, url FROM video WHERE id_curso = @id_curso');
+      .query(
+        'SELECT id, titulo, descricao, caminho, ordem FROM modulos WHERE id_curso = @id_curso ORDER BY ordem'
+      );
 
-    // Mapeia as URLs para apontar pro IIS
-    const videos = result.recordset.map((v) => ({
-      id: v.id,
-      id_curso: v.id_curso,
-      titulo: v.titulo,
-      descricao: v.descricao,
-      url: `${baseURL}/${path.basename(v.url)}`,
-    }));
+    // Busca todos os vídeos
+    const videosResult = await pool
+      .request()
+      .input('id_curso', sql.Int, id_curso)
+      .query(
+        'SELECT id, id_modulo, titulo, descricao, url FROM video WHERE id_curso = @id_curso'
+      );
 
-    res.json(videos);
+    // Caso tenha módulos
+    if (modulosResult.recordset.length > 0) {
+      const modulos = modulosResult.recordset.map((mod) => {
+        const videos = videosResult.recordset
+          .filter((v) => v.id_modulo === mod.id)
+          .map((v) => {
+            let finalUrl = '';
+
+            if (v.url && v.url.startsWith('http')) {
+              finalUrl = v.url;
+            } else if (v.url && v.url.includes('.')) {
+              finalUrl = `${baseURL}/${path.basename(mod.caminho)}/${path.basename(v.url)}`;
+            } else {
+              finalUrl = `${baseURL}/${path.basename(mod.caminho)}/${v.titulo}.mp4`;
+            }
+
+            return {
+              id: v.id,
+              titulo: v.titulo,
+              descricao: v.descricao,
+              url: finalUrl,
+            };
+          });
+
+        return {
+          id: mod.id,
+          titulo: mod.titulo,
+          descricao: mod.descricao,
+          ordem: mod.ordem,
+          videos,
+        };
+      });
+
+      return res.json({ tipo: 'com_modulos', modulos });
+    }
+
+    // Caso não tenha módulos
+    const videos = videosResult.recordset
+      .filter((v) => !v.id_modulo)
+      .map((v) => {
+        let finalUrl = '';
+
+        if (v.url && v.url.startsWith('http')) {
+          finalUrl = v.url;
+        } else if (v.url && v.url.includes('.')) {
+          finalUrl = `${baseURL}/${path.basename(v.url)}`;
+        } else {
+          finalUrl = `${baseURL}/${v.titulo}.mp4`;
+        }
+
+        return {
+          id: v.id,
+          titulo: v.titulo,
+          descricao: v.descricao,
+          url: finalUrl,
+        };
+      });
+
+    return res.json({ tipo: 'sem_modulos', videos });
   } catch (err) {
-    console.error(' Erro ao buscar vídeos do curso:', err.message);
+    console.error('Erro ao buscar vídeos do curso:', err.message);
     res.status(500).json({ error: 'Erro ao buscar vídeos do curso' });
   }
 });

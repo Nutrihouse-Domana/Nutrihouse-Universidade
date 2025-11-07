@@ -5,7 +5,8 @@ import Home from "./pages/Home";
 import Sobre from './pages/Sobre';
 import Cards from "./pages/Cards";
 import VideoPage from "./pages/VideoPage";
-import MaterialPage from "./pages/MaterialPage"
+import MaterialPage from "./pages/MaterialPage";
+import TeknisaPage from "./pages/TeknisaPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
     <Route path="/cards" element={<Cards />} />
     <Route path="/video/:id" element={<VideoPage />} />
     <Route path="/materiais/:id" element={<MaterialPage />} />
+    <Route path="/video/7" element={<TeknisaPage />} />
     <Route path="/sobre" element={<Sobre />} />
   </Routes>
 </Router>
