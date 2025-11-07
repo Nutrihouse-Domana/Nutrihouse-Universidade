@@ -48,12 +48,12 @@ function TeknisaPage() {
 
       {/* Seção principal com fundo */}
       <section
-        className="relative flex flex-col justify-center items-center flex-1 bg-[#FAF9F7]"
+        className="relative flex flex-grow justify-center items-center flex-1  bg-[#FAF9F7]"
         style={{
           backgroundImage: `url(${backgroundImage})`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "bottom",
-          backgroundSize: "cover",
+          backgroundSize: "100% 70%",
         }}
       >
         <div className="relative w-full max-w-[1150px] px-6 flex flex-col justify-between h-full pt-10 z-10">
