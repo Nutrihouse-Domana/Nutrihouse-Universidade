@@ -47,7 +47,7 @@ const Home = () => {
   };
 
   return (
-    <main className="bg-[#FAF9F7] flex flex-col min-h-screen pt-[70px] font-sans">
+    <main className="bg-[#FAF9F7] flex flex-col min-h-screen pt-[50px] font-sans">
       {/* Cabeçalho */}
       <Header username={username} />
 
@@ -57,7 +57,7 @@ const Home = () => {
               backgroundImage: `url(${backgroundImage})`,
               backgroundRepeat: "no-repeat",
               backgroundPosition: "bottom",
-              backgroundSize: "100% 50%",
+              backgroundSize: "100% 40%",
        }}
       >
       <div className="w-full max-w-[1150px] px-6 flex flex-col justify-between h-full pt-10">

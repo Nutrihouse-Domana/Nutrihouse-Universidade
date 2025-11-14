@@ -16,7 +16,7 @@ return (
       className="flex flex-row items-center justify-start 
     bg-[linear-gradient(135deg,_#B95758,_#e14d3a)]   
     text-white shadow-xl font-poppins text-lg rounded-2xl 
-    w-72 h-44 sm:w-80 sm:h-40 p-6 mx-2 transition-transform 
+    w-72 h-44 sm:w-80 sm:h-40 p-8 mx-2 transition-transform 
     hover:scale-105 hover:shadow-2xl duration-200"
 >
       {/* Ícone do curso */}

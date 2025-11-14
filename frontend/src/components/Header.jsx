@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import SearchBar from "./Searchbar.jsx";
 import Logo from "../assets/logos/logo_preta.png";
 import User from "../assets/images/user.png";
 import ExitIcon from "../assets/images/exit2.png"; 
@@ -9,6 +10,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const storedUsername = localStorage.getItem("username");
@@ -34,11 +36,13 @@ const Header = () => {
 
   return (
     <header className="fixed inset-x-0 top-0 z-40 bg-[#FAF9F7] shadow-sm border-b-0">
-      <div className="mx-auto flex max-w-screen-xl items-center justify-between px-8 py-4">
+      <div className="mx-auto flex max-w-screen-xl items-center justify-between px-6 py-2">
         {/* Logo à esquerda */}
         <div className="flex items-center">
           <img src={Logo} alt="NutriHouse" className="h-10 w-auto" />
         </div>
+
+      <SearchBar value={search} onChange={setSearch} />  
 
         {/* Direita: NAV + Saudações lado a lado */}
         <div className="flex items-center gap-10">
