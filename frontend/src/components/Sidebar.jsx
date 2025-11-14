@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 
 const Sidebar = ({
@@ -11,8 +11,35 @@ const Sidebar = ({
   const navigate = useNavigate();
   const { id } = useParams();
   const location = useLocation();
+
   const [mostrarTooltip, setMostrarTooltip] = useState(false);
   const [moduloAberto, setModuloAberto] = useState(null);
+
+  const [sidebarWidth, setSidebarWidth] = useState(300);
+  const [isResizing, setIsResizing] = useState(false);
+
+  const startResizing = () => setIsResizing(true);
+  const stopResizing = () => setIsResizing(false);
+
+  const handleResize = (e) => {
+    if (isResizing) {
+      const newWidth = e.clientX;
+
+      if (newWidth > 220 && newWidth < 400) {
+        setSidebarWidth(newWidth);
+      }
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("mousemove", handleResize);
+    window.addEventListener("mouseup", stopResizing);
+
+    return () => {
+      window.removeEventListener("mousemove", handleResize);
+      window.removeEventListener("mouseup", stopResizing);
+    };
+  }, [isResizing]);
 
   const handleVoltar = () => {
     if (location.pathname.includes("/materiais")) {
@@ -23,7 +50,10 @@ const Sidebar = ({
   };
 
   return (
-    <aside className="sidebar w-72 bg-[linear-gradient(135deg,_#B95758,_#e14d3a)] text-white p-6 fixed top-0 left-0 h-full flex flex-col justify-between shadow-lg">
+    <div
+      style={{ width: sidebarWidth }}
+      className="sidebar bg-[linear-gradient(135deg,_#B95758,_#e14d3a)] text-white p-6 fixed top-0 left-0 h-full flex flex-col justify-between shadow-lg transition-none select-none"
+    >
       {/* Cabeçalho */}
       <div className="flex items-center gap-3 mb-6 relative">
         <div
@@ -63,7 +93,7 @@ const Sidebar = ({
 
       {/* Lista de módulos ou vídeos */}
       <ul
-        className="flex-1 overflow-y-auto pr-2 space-y-3 text-sm scrollbar-thin scrollbar-thumb-yellow-300 scrollbar-track-transparent"
+        className="flex-2 overflow-y-auto pr-1 space-y-6 text-sm custom-scrollbar"
         style={{ height: "calc(100vh - 180px)" }}
       >
         {modulos.length > 0 ? (
@@ -91,34 +121,46 @@ const Sidebar = ({
               </div>
 
               {moduloAberto === mod.id && (
-                <ul className="pl-3 mt-2 space-y-1">
+                <ul className="pl-3 mt-2 space-y-4">
                   {mod.videos.map((v) => (
                     <li
                       key={v.id}
                       onClick={() => setSelectedVideo(v)}
-                      className={`cursor-pointer flex items-center justify-between truncate ${
+                      className={`cursor-pointer flex items-center gap-3 ${
                         watchedVideos[v.id]
                           ? "text-green-300"
                           : "hover:text-yellow-200"
                       }`}
                     >
-                      <span>{v.titulo}</span>
-                      {watchedVideos[v.id] && (
+                      {/* Ícone do lado esquerdo */}
+                      <div
+                        className={`flex-shrink-0 ${
+                          watchedVideos[v.id] ? "text-green-400" : "text-white"
+                        }`}
+                      >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          className="w-4 h-4 text-green-400 ml-2"
-                          fill="none"
+                          width="18"
+                          height="18"
                           viewBox="0 0 24 24"
+                          fill="none"
                           stroke="currentColor"
-                          strokeWidth={3}
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="lucide lucide-circle-check-icon"
                         >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M5 13l4 4L19 7"
-                          />
+                          <circle cx="12" cy="12" r="10" />
+                          <path d="m9 12 2 2 4-4" />
                         </svg>
-                      )}
+                      </div>
+
+                      <span
+                        className="line-clamp-2 leading-tight flex-1"
+                        title={v.titulo}
+                      >
+                        {v.titulo}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -130,31 +172,39 @@ const Sidebar = ({
             <li
               key={video.id}
               onClick={() => setSelectedVideo(video)}
-              className={`cursor-pointer transition flex items-center justify-between truncate ${
+              className={`cursor-pointer transition flex items-center gap-3 truncate ${
                 watchedVideos[video.id]
                   ? "text-green-300"
                   : "hover:text-yellow-200"
               }`}
               title={video.titulo || video.descricao}
             >
-              <span>{video.titulo || video.descricao}</span>
-
-              {watchedVideos[video.id] && (
+              {/* Checklist */}
+              <div
+                className={`flex-shrink-0 ${
+                  watchedVideos[video.id] ? "text-green-400" : "text-white"
+                }`}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-4 h-4 text-green-400 flex-shrink-0 ml-2"
-                  fill="none"
+                  width="18"
+                  height="18"
                   viewBox="0 0 24 24"
+                  fill="none"
                   stroke="currentColor"
-                  strokeWidth={3}
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="lucide lucide-circle-check-icon"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M5 13l4 4L19 7"
-                  />
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="m9 12 2 2 4-4" />
                 </svg>
-              )}
+              </div>
+
+              <span className="flex-1">
+                {video.titulo || video.descricao}
+              </span>
             </li>
           ))
         )}
@@ -169,7 +219,13 @@ const Sidebar = ({
           Material de Apoio
         </button>
       )}
-    </aside>
+
+      {/* Barra de arrastar */}
+      <div
+        onMouseDown={startResizing}
+        className="absolute top-0 right-0 w-2 h-full cursor-col-resize hover:bg-white active:bg-white"
+      ></div>
+    </div>
   );
 };
 

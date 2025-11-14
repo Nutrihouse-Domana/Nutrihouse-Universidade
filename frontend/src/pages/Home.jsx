@@ -3,6 +3,8 @@ import { useNavigate, Outlet } from "react-router-dom";
 import CarouselCard from "../components/CarouselCard";
 import Header from "../components/Header";
 import Chatbot from "../components/Chatbot";
+import backgroundImage from "../assets/images/background_teknisa_page.png";
+
 
 const PAGE_SIZE = 6;
 
@@ -50,9 +52,16 @@ const Home = () => {
       <Header username={username} />
 
       {/* Conteúdo principal */}
-      <section className="relative flex flex-col justify-center items-center flex-1">
-        <div className="w-full max-w-[1150px] px-6 flex flex-col justify-between h-full pt-10">
-          <Outlet />
+      <section className="relative flex flex-col justify-center items-center flex-1"
+      style={{ 
+              backgroundImage: `url(${backgroundImage})`,
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "bottom",
+              backgroundSize: "100% 50%",
+       }}
+      >
+      <div className="w-full max-w-[1150px] px-6 flex flex-col justify-between h-full pt-10">
+       <Outlet />
 
           {/* Grid de cards e navegação */}
           <div className="relative w-full flex items-center justify-center mt-1">
@@ -111,7 +120,7 @@ const Home = () => {
           </div>
 
           {/* Paginação */}
-          {total > 1 && (
+          {total > 0 && (
             <div className="w-full h-[100px] flex items-center justify-center">
               <div className="paginacao-container space-x-2">
                 {Array.from({ length: total }).map((_, i) => (

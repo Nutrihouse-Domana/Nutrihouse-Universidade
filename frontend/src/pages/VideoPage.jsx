@@ -2,12 +2,10 @@ import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import Sidebar from "../components/Sidebar.jsx";
 
-const SERVER_HOST = "http://NHBD02";
-
 const VideoPage = () => {
   const { id } = useParams();
   const [videos, setVideos] = useState([]);
-  const [modulos, setModulos] = useState([]); // ✅ novo estado para módulos
+  const [modulos, setModulos] = useState([]); 
   const [temModulos, setTemModulos] = useState(false);
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [loading, setLoading] = useState(true);

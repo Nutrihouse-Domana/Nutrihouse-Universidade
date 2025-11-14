@@ -20,7 +20,7 @@ const Sobre = () => {
   }, []);
 
   return (
-    <main className="h-screen bg-[#FAF9F7] min-h-screen flex flex-col overflow-y-scroll(right)">
+    <main className="h-screen bg-[#FAF9F7] min-h-screen flex flex-col overflow-y-auto custom-scrollbar relative">
       {/* Onda no canto superior direito */}
       <div className="absolute top-0 right-0 z-0 flex-grow">
         <img 

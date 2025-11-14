@@ -46,10 +46,10 @@ function Chatbot() {
 
   return (
     <>
-      {/* 🔹 Botão flutuante */}
+      {/* Botão flutuante */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-4 right-6 z-40 w-16 h-16 rounded-full bg-yellow-500 shadow-lg hover:bg-yellow-400 transition grid place-items-center"
+        className="fixed bottom-4 right-6 z-40 w-16 h-16 rounded-full bg-[#EAB308] shadow-lg hover:bg-yellow-400 transition grid place-items-center"
         aria-label="Abrir Chatbot"
       >
         <img src={ChatbotIcon} alt="Chatbot" className="w-8 h-8" />
